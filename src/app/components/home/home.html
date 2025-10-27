@@ -1,1 +1,50 @@
-<p>I love you!</p>
+<h1>I love you!</h1>
+
+<h2>Ejemplos de comunicación entre plantilla y controlador del componente Home</h2>
+
+<!-- Interpolación -->
+<h3>Hola {{ nombre }}</h3>
+<h3>Hola {{ nombre.toUpperCase() }}</h3>
+<h3>{{ 'Hola ' + nombre }}</h3>
+<h3>Hola {{ nombre.length }}</h3>
+<h3>Hola {{ 25 + 45 }}</h3>
+<h3>{{ sumar(25, 45) }}</h3>
+
+<h2>Atributos</h2>
+<img
+  src="https://tse3.mm.bing.net/th/id/OIP.JVRKYc0Ptsson1dEgHV91AHaNK?rs=1&pid=ImgDetMain&o=7&rm=3"
+  alt="Imagen de Homer"
+  [title]="titulo"
+  [width]="ancho"
+>
+
+<h3>Clases con ngClass</h3>
+<div [ngClass]="{ error: !hasError }">Esto es un error</div>
+<div [ngClass]="{ error: hasError }">Esto NO es un error</div>
+<div [ngClass]="{ error: siHayError() }">Esto es un error</div>
+<div [ngClass]="{ error: noHayError() }">Esto NO es un error</div>
+
+<h2>Eventos y inputs</h2>
+<button (click)="cambiarNombre()">Cambiar Nombre</button>
+Nombre1: <input type="text" (input)="cambiarNombreInput($event)">
+Nombre2: <input [value]="nombre" (input)="cambiarNombreInput($event)">
+
+<p>Nombre actual: {{ nombre }}</p>
+
+<h1>Control del flujo en la plantilla</h1>
+
+<h3>Directiva *ngIf</h3>
+<div *ngIf="noHayError()">No hay errores</div>
+<div *ngIf="siHayError()">Hay errores</div>
+
+<!-- Toggle de contenido -->
+<h3 *ngIf="mostrar">Mostrando el contenido 1</h3>
+<h3 *ngIf="!mostrar">Mostrando el contenido 2</h3>
+
+<button (click)="flipMostrar()">Toggle Mostrar</button>
+
+<h3>Directiva *ngFor mejor @ for</h3>
+<ul>
+  <li *ngFor="let amigo of amigos; let i = index">
+    {{ i }} - {{ amigo }}
+  </li>
