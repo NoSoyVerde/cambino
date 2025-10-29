@@ -1,60 +1,66 @@
-import { NgClass, NgIf } from '@angular/common';
+
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [NgClass, NgIf],
+  imports: [CommonModule],
   templateUrl: './home.html',
-  styleUrls: ['./home.css'],
+  styleUrl: './home.css',
+  standalone: true
 })
+
 export class Home {
-  nombre: string = 'Hector';
-  titulo: string = 'Homer';
-  ancho: number = 200; // ancho de imagen en píxeles
-  hasError: boolean = false;
-  mostrar: boolean = true; // toggle de contenido
-  amigos: string[] = ['Bart', 'Lisa', 'Maggie']; // lista de amigos para *ngFor
+
+  nombre = 'Rafa';
+  titulo = "Homer"
+  ancho = 300;
+  hasError = false;
+  mostrar = false;
+  items = ['Manzana', 'Banana', 'Naranja'];
+  today = new Date();
+  nombreusuario: string = '';
 
   constructor() {
-    console.log('Home component initialized');
+    console.log('constructor');
     this.nombre = 'Jose';
   }
 
   ngOnInit() {
-    console.log('Home component ngOnInit called');
+    console.log('ngOnInit');
     this.nombre = 'Ana';
   }
 
-  // Devuelve true si NO hay error
-  noHayError(): boolean {
-    return !this.hasError;
-  }
-
-  // Devuelve true si hay error
-  siHayError(): boolean {
+  noHayError() {
     return this.hasError;
   }
 
-  // Suma dos números
-  sumar(a: number, b: number): number {
+  siHayError() {
+    return !this.hasError;
+  }
+
+  suma(a: number, b: number): number {
     return a + b;
   }
 
-  // Cambia el nombre a Carlos
-  cambiarNombre(): void {
-    this.nombre = 'Carlos';
+  cambiarNombreInput(event: any) {
+    this.nombre = event.target.value;
   }
 
-  // Cambia el nombre desde un input
-  cambiarNombreInput(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.nombre = inputElement.value;
-  }
-
-  // Alterna el valor de 'mostrar' para toggle
-  flipMostrar(): void {
+  flipMostrar() {
     this.mostrar = !this.mostrar;
-    console.log('mostrar:', this.mostrar);
   }
+
+  complicado() {
+    return [1, 2, 3].map(n => n * 2).filter(n => n > 2);
+  }
+cambiarNombre(Nuevonombre: string) {
+  this.nombreusuario = Nuevonombre;
+}
+irASaludoEnrutado() {
+  window.location.href = `/saludoenrutado/${this.nombreusuario}`;   
+}
+irASaludoEnrutado2() {
+  window.location.href = `/saludoenrutado`;
+}
 }
