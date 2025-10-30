@@ -1,10 +1,13 @@
 
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from "@angular/router";
+import { AleatorioService } from '../../services/aleatorio';
+import { Aleatorio } from "../aleatorio/aleatorio";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, Aleatorio],
   templateUrl: './home.html',
   styleUrl: './home.css',
   standalone: true
@@ -20,11 +23,9 @@ export class Home {
   items = ['Manzana', 'Banana', 'Naranja'];
   today = new Date();
   nombreusuario: string = '';
+  constructor(private aleatorioService: AleatorioService) {}
+  numeroAleatorio: number = 1;
 
-  constructor() {
-    console.log('constructor');
-    this.nombre = 'Jose';
-  }
 
   ngOnInit() {
     console.log('ngOnInit');
@@ -62,5 +63,9 @@ irASaludoEnrutado() {
 }
 irASaludoEnrutado2() {
   window.location.href = `/saludoenrutado`;
+}
+
+generarAleatorio() {
+  this.numeroAleatorio = this.aleatorioService.generarAleatorio(1, 100);
 }
 }

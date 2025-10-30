@@ -1,15 +1,29 @@
 <h1>Este es el componente home</h1>
 
-
 <!-- enlazar la pagina de ejercicios -->
- <a href="ejercicio01clase">Ir a Ejercicio 01 Clase</a>
-  <br>  
-  <a href="landing">Ir a Landing</a>
-  <br>  
-  <a href="saludoenrutado/{{nombreusuario}}">Ir a Saludo Enrutado</a>
+<br />
+<a href="landing">Ir a Landing</a>
+<br />
+<a href="saludoenrutado/{{ nombreusuario }}">Ir a Saludo Enrutado</a><br />
+<a [routerLink]="['/rxjscomponent']">Ir a RXJS Component</a>
+<br />
+<a [routerLink]="['/padre']">Ir a Componente Padre</a>
+<br /><br />
 
-  <h1>Hola {{nombreusuario}}</h1>
+<h1>Hola {{ nombreusuario }}</h1>
 
-  <input type="text" placeholder="Escribe algo" [value]="nombreusuario" (input)="cambiarNombre($event.target.value)"><br>
-  <button (click)="irASaludoEnrutado()">Ir a Saludo Enrutado</button>
-  <button (click)="irASaludoEnrutado2()">Ir a Saludo Enrutado 2</button>
+<input
+  type="text"
+  placeholder="Escribe algo"
+  [value]="nombreusuario"
+  (input)="cambiarNombre($event.target.value)"
+/><br /><br />
+<button (click)="irASaludoEnrutado()">Ir a Saludo Enrutado</button>
+<button (click)="irASaludoEnrutado2()">Ir a Saludo Enrutado 2</button>
+<br>
+<h3>Obteniendo un numero aleatorio de un servicio injectable</h3>
+<button (click)="generarAleatorio()">Generar Numero Aleatorio</button>
+<h2>Numero aleatorio obtenido= {{ numeroAleatorio }}</h2>
+<hr>
+<h3>Componente no enrutado aleatorio que gasta el servicio aleatorio</h3>
+<app-aleatorio></app-aleatorio>
