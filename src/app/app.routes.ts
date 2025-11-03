@@ -6,6 +6,7 @@ import { SaludoEnrutado } from './components/saludoenrutado/saludoenrutado';
 import { Rxjscomponent } from './components/rxjscomponent/rxjscomponent';
 import { PadreComponent } from './components/padre/padre';
 import { PostListComponent } from './components/post-list/post-list';
+import { RickMortyComponent } from './components/rick-morty/rick-morty';
 import { UsuarioComponent } from './components/usuario/usuario';
 
 export const routes: Routes = [
@@ -18,5 +19,6 @@ export const routes: Routes = [
     { path: 'rx', component: Rxjscomponent },
     { path: 'padre', component: PadreComponent },
     { path: 'post', component: PostListComponent },
+    { path: 'rick-morty', component: RickMortyComponent },
     { path: 'usuario', component: UsuarioComponent },
 ];
