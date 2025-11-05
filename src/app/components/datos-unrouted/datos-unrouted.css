@@ -1,0 +1,71 @@
+/* Contenedor principal con CSS Grid */
+.user-data-container {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.data-row {
+  display: contents;
+}
+
+.data-label {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  padding: 12px 15px;
+  border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+}
+
+.data-value {
+  padding: 12px 15px;
+  color: #212529;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* Alternar colores de fondo */
+.data-row:nth-child(even) .data-value {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+.data-row:nth-child(even) .data-label {
+  background-color: #e9ecef;
+}
+
+/* Hover effect */
+.data-row:hover .data-label,
+.data-row:hover .data-value {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Enlaces */
+.data-value a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.data-value a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Eliminar borde inferior de la última fila */
+.data-row:last-child .data-label,
+.data-row:last-child .data-value {
+  border-bottom: none;
+}
+
+.table a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

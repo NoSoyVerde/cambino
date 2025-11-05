@@ -1,0 +1,36 @@
+<div class="user-data-container">
+  <div class="data-row">
+    <div class="data-label">Nombre</div>
+    <div class="data-value">{{ oUsuario.name }}</div>
+  </div>
+  <div class="data-row">
+    <div class="data-label">Username</div>
+    <div class="data-value">{{ oUsuario.username }}</div>
+  </div>
+  <div class="data-row">
+    <div class="data-label">Email</div>
+    <div class="data-value">
+      <a href="mailto:{{ oUsuario.email }}">{{ oUsuario.email }}</a>
+    </div>
+  </div>
+  <div class="data-row">
+    <div class="data-label">Teléfono</div>
+    <div class="data-value">
+      <a href="tel:{{ oUsuario.phone }}">{{ oUsuario.phone }}</a>
+    </div>
+  </div>
+  <div class="data-row">
+    <div class="data-label">Web</div>
+    <div class="data-value">
+      <a href="http://{{ oUsuario.website }}" target="_blank">{{ oUsuario.website }}</a>
+    </div>
+  </div>
+  <div class="data-row">
+    <div class="data-label">Empresa</div>
+    <div class="data-value">{{ oUsuario.company.name }}</div>
+  </div>
+  <div class="data-row">
+    <div class="data-label">Ciudad</div>
+    <div class="data-value">{{ oUsuario.address.city }}</div>
+  </div>
+</div>
