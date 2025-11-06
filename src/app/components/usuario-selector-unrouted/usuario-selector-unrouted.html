@@ -1,0 +1,101 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>
+    <mat-icon>person_search</mat-icon>
+    Seleccionar Usuario
+  </h2>
+  
+  <mat-dialog-content class="dialog-content">
+    <!-- Buscador -->
+    <div class="search-container mb-3">
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="bi bi-search"></i>
+        </span>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Buscar por nombre, email, empresa o ciudad..."
+          (input)="filtrarUsuarios($event)">
+      </div>
+    </div>
+    
+
+    <!-- Tabla de usuarios -->
+    <div class="table-container">
+      @if (usuariosFiltrados.length > 0) {
+        <table class="table table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Seleccionar</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Email</th>
+              <th scope="col">Empresa</th>
+              <th scope="col">Ciudad</th>
+              <th scope="col">Teléfono</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (usuario of usuariosFiltrados; track usuario.id) {
+              <tr 
+                class="user-row"
+                [class.table-success]="usuarioSeleccionado?.id === usuario.id"
+                (click)="seleccionarUsuario(usuario)">
+                <td class="text-center">
+                  @if (usuarioSeleccionado?.id === usuario.id) {
+                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                  } @else {
+                    <i class="bi bi-circle text-muted"></i>
+                  }
+                </td>
+                <td>
+                  <div>
+                    <strong>{{ usuario.name }}</strong>
+                    <br>
+                    <small class="text-muted">{{ usuario.username }}</small>
+                  </div>
+                </td>
+                <td>
+                  <a href="mailto:{{ usuario.email }}" class="text-decoration-none">
+                    {{ usuario.email }}
+                  </a>
+                </td>
+                <td>
+                  <div>
+                    <strong>{{ usuario.company.name }}</strong>
+                    <br>
+                    <small class="text-muted">{{ usuario.company.catchPhrase }}</small>
+                  </div>
+                </td>
+                <td>
+                  <i class="bi bi-geo-alt me-1"></i>
+                  {{ usuario.address.city }}
+                </td>
+                <td>
+                  <a href="tel:{{ usuario.phone }}" class="text-decoration-none">
+                    {{ usuario.phone }}
+                  </a>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <div class="no-results text-center text-muted py-4">
+          <i class="bi bi-person-x display-4"></i>
+          <p class="mt-2">No se encontraron usuarios</p>
+        </div>
+      }
+    </div>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cerrar()">Cancelar</button>
+    <button 
+      mat-raised-button 
+      color="primary" 
+      [disabled]="!usuarioSeleccionado"
+      (click)="confirmarSeleccion()">
+      Seleccionar
+    </button>
+  </mat-dialog-actions>
+</div>

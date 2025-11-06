@@ -8,6 +8,8 @@ import { PadreComponent } from './components/padre/padre';
 import { PostListComponent } from './components/post-list/post-list';
 import { RickMortyComponent } from './components/rick-morty/rick-morty';
 import { UsuarioComponent } from './components/usuario/usuario';
+import { UsuarioSelectorUnrouted } from './components/usuario-selector-unrouted/usuario-selector-unrouted';
+import { MostrarUsuario } from './components/mostrar-usuario/mostrar-usuario';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -21,4 +23,6 @@ export const routes: Routes = [
     { path: 'post', component: PostListComponent },
     { path: 'rick-morty', component: RickMortyComponent },
     { path: 'usuario', component: UsuarioComponent },
+    { path: 'usuario-selector', component: UsuarioSelectorUnrouted },
+    { path: 'mostrar-usuario', component: MostrarUsuario },
 ];

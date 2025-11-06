@@ -1,0 +1,112 @@
+<div class="container mt-4">
+  <h2>Gestión de Usuarios</h2>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-people"></i> Lista de Usuarios
+          </h5>
+        </div>
+        <div class="card-body">
+          <button 
+            class="btn btn-primary mb-3" 
+            (click)="abrirSelectorUsuario()">
+            <i class="bi bi-search"></i> Seleccionar Usuario
+          </button>
+          
+          @if (usuarios.length > 0) {
+            <div class="list-group">
+              @for (usuario of usuarios.slice(0, 5); track usuario.id) {
+                <button 
+                  type="button" 
+                  class="list-group-item list-group-item-action"
+                  [class.active]="usuarioSeleccionado?.id === usuario.id"
+                  (click)="seleccionarUsuario(usuario)">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">{{ usuario.name }}</h6>
+                    <small>{{ usuario.email }}</small>
+                  </div>
+                  <p class="mb-1">{{ usuario.company.name }}</p>
+                  <small>{{ usuario.address.city }}</small>
+                </button>
+              }
+            </div>
+            
+            @if (usuarios.length > 5) {
+              <div class="text-center mt-3">
+                <small class="text-muted">
+                  ... y {{ usuarios.length - 5 }} usuarios más (usa el selector para ver todos)
+                </small>
+              </div>
+            }
+          } @else {
+            <div class="text-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando usuarios...</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-person-circle"></i> Detalles del Usuario
+          </h5>
+        </div>
+        <div class="card-body">
+          @if (usuarioSeleccionado) {
+            <div class="user-details">
+              <div class="text-center mb-3">
+                <i class="bi bi-person-circle display-4 text-primary"></i>
+                <h4 class="mt-2">{{ usuarioSeleccionado.name }}</h4>
+                <p class="text-muted">{{ usuarioSeleccionado.username }}</p>
+              </div>
+              
+              <div class="info-section">
+                <h6 class="text-primary border-bottom pb-2">
+                  <i class="bi bi-envelope"></i> Contacto
+                </h6>
+                <p><strong>Email:</strong> 
+                  <a href="mailto:{{ usuarioSeleccionado.email }}">{{ usuarioSeleccionado.email }}</a>
+                </p>
+                <p><strong>Teléfono:</strong> 
+                  <a href="tel:{{ usuarioSeleccionado.phone }}">{{ usuarioSeleccionado.phone }}</a>
+                </p>
+                <p><strong>Sitio Web:</strong> 
+                  <a href="http://{{ usuarioSeleccionado.website }}" target="_blank">{{ usuarioSeleccionado.website }}</a>
+                </p>
+              </div>
+              
+              <div class="info-section mt-3">
+                <h6 class="text-success border-bottom pb-2">
+                  <i class="bi bi-building"></i> Empresa
+                </h6>
+                <p><strong>{{ usuarioSeleccionado.company.name }}</strong></p>
+                <p class="text-muted">{{ usuarioSeleccionado.company.catchPhrase }}</p>
+              </div>
+              
+              <div class="info-section mt-3">
+                <h6 class="text-info border-bottom pb-2">
+                  <i class="bi bi-geo-alt"></i> Ubicación
+                </h6>
+                <p>{{ usuarioSeleccionado.address.street }}, {{ usuarioSeleccionado.address.suite }}</p>
+                <p>{{ usuarioSeleccionado.address.city }} - {{ usuarioSeleccionado.address.zipcode }}</p>
+              </div>
+            </div>
+          } @else {
+            <div class="text-center text-muted">
+              <i class="bi bi-person-plus display-4"></i>
+              <p class="mt-3">Selecciona un usuario para ver sus detalles</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
